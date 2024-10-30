@@ -25,8 +25,9 @@ export class Triangle implements Figure {
     if (a <= 0 || b <= 0 || c <= 0) {
       throw new Error('All sides must be greater than 0');
     }
+    // Updated triangle inequality condition
 
-    if (Math.max(a, b, c) >= a + b + c - Math.max(a, b, c)) {
+    if (a + b <= c || a + c <= b || b + c <= a) {
       throw new Error(`Sides ${a}, ${b}, and ${c} can't form a triangle`);
     }
   }
@@ -89,5 +90,5 @@ export class Rectangle implements Figure {
 }
 
 export function getInfo(figure: Figure): string {
-  return `A ${figure.color} ${figure.shape} - ${figure.getArea()}`;
+  return `A ${figure.color} ${figure.shape} - ${figure.getArea()} square units`;
 }
